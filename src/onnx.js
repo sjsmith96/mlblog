@@ -32,24 +32,32 @@ function argMax(array) {
 
 async function guess() {
   const image = ctx.getImageData(0, 0, 280, 280);
-  console.log(image.data);
   const sneeds = {
     '0': new ort.Tensor('float32', new Float32Array(image.data))
   };
 
   const output = await session.run(sneeds);
-  console.log(output);
   const outputTensor = output["30"];
   const predictions = outputTensor.data;
   const maxPrediction = argMax(predictions);
   for (let i = 0; i < predictions.length; i++) {
-    const element = document.getElementById(`fill-${i}`);
-    console.log('ele', element);
+
+    
+    const element = document.getElementById(`fill-${i}`);    
+    const digit = document.getElementById(`digit-${i}`);
+    if(i == maxPrediction)
+    {
+      digit.className = 'bar-card__digit--predicted';
+      element.className = 'bar-card__bar-fill--predicted';
+    }
+    else
+    {
+      digit.className = 'bar-card__digit';
+      element.className = 'bar-card__bar-fill';
+    }
+
     element.style.height = `${predictions[i] * 100}%`;
   }
-  
-  
-  console.log(maxPrediction);
 }
 
 let drawing = false;
@@ -91,6 +99,12 @@ function draw(event) {
 
 // Clear canvas
 document.getElementById('clear-btn').addEventListener('click', () => {
+  for (let i = 0; i < 10; i++) {
+    const element = document.getElementById(`fill-${i}`);
+    const digit = document.getElementById(`digit-${i}`);
+    element.style.height = "0";
+    digit.className = 'bar-card__digit';
+  }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     started = false;
     isShowingStartText = false;
