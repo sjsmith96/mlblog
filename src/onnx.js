@@ -70,6 +70,12 @@ canvas.addEventListener('mouseup', () => {
     started = false;
 });
 canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('touchstart', () => drawing = true);
+canvas.addEventListener('touchend', () => {
+    drawing = false
+    started = false;
+});
+canvas.addEventListener('touchmove', draw);
 
 function draw(event) {
     if (!drawing) return;
