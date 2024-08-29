@@ -63,7 +63,6 @@ async function guess() {
 let drawing = false;
 let started = false;
 
-// Set up the canvas for drawing
 canvas.addEventListener('mousedown', () => drawing = true);
 canvas.addEventListener('mouseup', () => {
     drawing = false
