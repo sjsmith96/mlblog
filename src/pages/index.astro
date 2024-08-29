@@ -1,16 +1,77 @@
 ---
-
+import Guesser from '../components/Guesser.jsx'
+import '../styles/styles.css'
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <!-- Canvas Element for Drawing -->
+	<div class="guesser">
+		<canvas id="canvas" width="280" height="280" style="border: none;"></canvas>
+		<br>
+		<button id="clear-btn" class="clear-btn">Clear</button>
+		<button id="predict-btn">Predict</button>
+		<script src="../onnx.js" />
+		<div class="bar-card">
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-0" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">0</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-1" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">1</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-2" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">2</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-3" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">3</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-4" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">4</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-5" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">5</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-6" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">6</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-7" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">7</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-8" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">8</span>
+			</div>
+			<div class="bar-card__bar-container">
+				<div class="bar-card__bar">
+					<div id="fill-9" class="bar-card__bar-fill" />
+				</div>	
+				<span class="bar-card__digit">9</span>
+			</div>
+		</div>
+	</div>
 </html>
